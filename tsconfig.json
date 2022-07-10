@@ -18,7 +18,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "types": [
+      "cypress",
+      "@testing-library/cypress",
+      "./cypress/support"
+    ]
   },
   "include": [
     "src"

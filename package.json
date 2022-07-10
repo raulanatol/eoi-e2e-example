@@ -20,13 +20,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "eject": "react-scripts eject",
+    "lint": "eslint --max-warnings 0 . --ext .ts",
+    "e2e:run": "cypress run",
+    "e2e:run:chrome": "cypress run --browser chrome",
+    "cypress": "cypress open"
   },
   "browserslist": {
     "production": [
@@ -39,5 +37,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@cowcoders/eslint-config": "1.5.5",
+    "@testing-library/cypress": "8.0.3",
+    "cypress": "10.3.0",
+    "eslint-plugin-jest": "26.5.3"
   }
 }
