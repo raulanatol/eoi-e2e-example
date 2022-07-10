@@ -1,6 +1,4 @@
-const noParser = json => json;
 const toJSON = response => response.json();
-const parse = parser => json => parser(json);
 
 const handleErrors = async (response: any) => {
   if (!response.ok) {
@@ -9,7 +7,7 @@ const handleErrors = async (response: any) => {
   return response;
 };
 
-const doRequest = async <T>(endpoint: string, method: string, body?: object, parser = noParser): Promise<T> => {
+const doRequest = async <T>(endpoint: string, method: string, body?: object): Promise<T> => {
   const request: RequestInit = {
     method,
     credentials: 'include',
@@ -28,11 +26,13 @@ const doRequest = async <T>(endpoint: string, method: string, body?: object, par
     fetch(url, request)
       .then(handleErrors)
       .then(toJSON)
-      .then(parse(parser))
       .then(resolve)
       .catch(err => reject(err));
   });
 };
 
-export const doGet = <T>(endpoint: string, parser?, body?: object): Promise<T> =>
-  doRequest<T>(endpoint, 'GET', body, parser);
+export const doGet = <T>(endpoint: string): Promise<T> =>
+  doRequest<T>(endpoint, 'GET');
+
+export const doPost = <T>(endpoint: string, body?: object): Promise<T> =>
+  doRequest<T>(endpoint, 'POST', body);
