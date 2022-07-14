@@ -8,7 +8,8 @@ const DashboardPage: FC = () => {
   useEffect(() => {
 
     API.getEvents()
-      .then((newEvents) => setEvents(newEvents));
+      .then((newEvents) => setEvents(newEvents))
+      .catch(() => setEvents([]));
 
   }, []);
 

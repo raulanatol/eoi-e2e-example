@@ -10,14 +10,25 @@ describe('Dashboard Page', () => {
       .should('exist');
   });
 
-  it('should display an event list', async () => {
-    cy.intercept('GET', '/events', [{ name: 'otro evento' }]).as('getEvents');
+  it('should display an event list', () => {
+    cy.fixture('events').then((json) => {
+      cy.intercept('GET', '/events', json).as('getEvents');
+    });
     cy.findByText(/playa Las Canteras/)
       .should('exist');
     cy.wait('@getEvents');
 
-    cy.findByText(/otro evento/)
+    cy.findByText(/Event 1/)
       .should('exist');
+  });
+
+  it('should not render a list when events Api fails', () => {
+    cy.intercept('GET', '/events', 'events.json').as('getEvents');
+    cy.findByText(/playa Las Canteras/)
+      .should('exist');
+    cy.wait('@getEvents');
+
+    cy.findByText(/playa Las Canteras/).should('not.exist');
   });
 
   // describe('navigation', () => {
