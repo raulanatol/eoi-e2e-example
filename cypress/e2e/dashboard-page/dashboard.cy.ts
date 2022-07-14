@@ -10,6 +10,11 @@ describe('Dashboard Page', () => {
       .should('exist');
   });
 
+  it('should display an event list', () => {
+    cy.findByText(/playa Las Canteras/)
+      .should('exist');
+  });
+
   // describe('navigation', () => {
   //   it('should redirect to login after click on the Login link', () => {
   //     cy.findByText(/login/)

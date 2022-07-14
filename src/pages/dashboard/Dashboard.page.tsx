@@ -1,13 +1,22 @@
-import React, { FC } from 'react';
+import { FC, useState } from 'react';
 import { Link } from '../../components/Link/Link';
 
-const DashboardPage: FC = () => {
 
+const DashboardPage: FC = () => {
+  const [events] = useState<any>([{ name: 'playa Las Canteras' }]);
+
+  // useEffect(() => {
+
+  // });
+  // if(){
+  //   return null;
+  // }
 
   return <div className="Container">
     <h1>Dashboard</h1>
-
-
+    <ul>
+      {events.map((event) => (<li>{event.name}</li>))}
+    </ul>
     <Link href="/src/pages">home</Link>
   </div>;
 };
