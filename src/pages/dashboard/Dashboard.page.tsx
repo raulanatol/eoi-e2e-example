@@ -1,16 +1,16 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { Link } from '../../components/Link/Link';
-
+import { API } from '../../network/API';
 
 const DashboardPage: FC = () => {
-  const [events] = useState<any>([{ name: 'playa Las Canteras' }]);
+  const [events, setEvents] = useState<any>([{ name: 'playa Las Canteras' }]);
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  // });
-  // if(){
-  //   return null;
-  // }
+    API.getEvents()
+      .then((newEvents) => setEvents(newEvents));
+
+  }, []);
 
   return <div className="Container">
     <h1>Dashboard</h1>

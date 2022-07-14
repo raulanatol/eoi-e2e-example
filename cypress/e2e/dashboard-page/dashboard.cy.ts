@@ -10,8 +10,13 @@ describe('Dashboard Page', () => {
       .should('exist');
   });
 
-  it('should display an event list', () => {
+  it('should display an event list', async () => {
+    cy.intercept('GET', '/events', [{ name: 'otro evento' }]).as('getEvents');
     cy.findByText(/playa Las Canteras/)
+      .should('exist');
+    cy.wait('@getEvents');
+
+    cy.findByText(/otro evento/)
       .should('exist');
   });
 
