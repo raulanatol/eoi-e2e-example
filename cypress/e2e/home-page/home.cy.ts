@@ -1,4 +1,4 @@
-export {};
+export { };
 
 describe('Home Page', () => {
   beforeEach(() => {
@@ -6,7 +6,7 @@ describe('Home Page', () => {
   });
 
   it('should display the home text', () => {
-    cy.findByText(/HomePage/)
+    cy.findByText(/Home/)
       .should('exist');
   });
 

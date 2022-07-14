@@ -3,7 +3,7 @@ import { Link } from '../components/Link/Link';
 
 const Home: FC = () => {
   return <div>
-    <h1>HomePage</h1>
+    <h1>Home</h1>
     <Link href="/login">login</Link>
   </div>;
 };
