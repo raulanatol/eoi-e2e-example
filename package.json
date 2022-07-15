@@ -40,8 +40,9 @@
   },
   "devDependencies": {
     "@cowcoders/eslint-config": "1.5.5",
-    "@testing-library/cypress": "8.0.3",
+    "@testing-library/cypress": "^8.0.3",
     "cypress": "10.3.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-jest": "26.5.3"
   }
 }
